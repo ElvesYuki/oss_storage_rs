@@ -11,7 +11,8 @@ use axum::{
     Json, Router,
 };
 use serde::{Deserialize, Serialize};
-use tracing::{span, Level};
+
+use common::utils::hash_utils::gene_uuid;
 
 #[tokio::main]
 async fn main() {
@@ -34,8 +35,10 @@ async fn main() {
 }
 
 // basic handler that responds with a static string
-async fn root() -> &'static str {
-    "Hello, World!"
+async fn root() -> String {
+    let uuid = gene_uuid();
+    tracing::info!("uuid {}", uuid);
+    uuid
 }
 
 async fn create_user(
