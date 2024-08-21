@@ -1,12 +1,13 @@
-[package]
-name = "oss_storage_rs"
-version = "0.1.0"
-edition = "2021"
+[workspace]
+members = ["crates/*"]
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+resolver = "2"
 
-[dependencies]
-axum = "0.6.18"
-hyper = { version = "0.14.27", features = ["full"] }
-tokio = { version = "1.28.2", features = ["full"] }
-tower = "0.4.13"
+[workspace.package]
+version = "18.4.0-beta.3"
+authors = ["Ellie Huxtable <ellie@atuin.sh>"]
+rust-version = "1.80"
+license = "MIT"
+homepage = "https://atuin.sh"
+repository = "https://github.com/atuinsh/atuin"
+readme = "README.md"
