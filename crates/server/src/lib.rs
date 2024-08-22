@@ -15,7 +15,7 @@ use serde::{Deserialize, Serialize};
 use common::utils::hash_utils::gene_uuid;
 
 #[tokio::main]
-async fn main() {
+pub async fn start() {
     // initialize tracing
     tracing_subscriber::fmt::init();
 
