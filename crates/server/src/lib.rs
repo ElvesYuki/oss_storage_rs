@@ -5,11 +5,11 @@ use axum::{
     Json, Router,
 };
 use serde::{Deserialize, Serialize};
-
+use anyhow::Result;
 use common::utils::hash_utils::gene_uuid;
 
 #[tokio::main]
-pub async fn start() {
+pub async fn start() -> Result<()> {
     // initialize tracing
     tracing_subscriber::fmt::init();
 
@@ -21,11 +21,12 @@ pub async fn start() {
         .route("/users", post(create_user));
 
     // run our app with hyper
-    let listener = tokio::net::TcpListener::bind("127.0.0.1:3000")
-        .await
-        .unwrap();
-    tracing::info!("listening on {}", listener.local_addr().unwrap());
-    axum::serve(listener, app).await.unwrap();
+    let listener =
+        tokio::net::TcpListener::bind("127.0.0.1:3000")
+        .await?;
+    tracing::info!("listening on {}", listener.local_addr()?);
+    axum::serve(listener, app).await?;
+    Ok(())
 }
 
 // basic handler that responds with a static string
