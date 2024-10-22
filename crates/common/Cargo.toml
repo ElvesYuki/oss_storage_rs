@@ -11,5 +11,5 @@ tokio = { workspace = true }
 tracing = { workspace = true }
 tracing-subscriber = { workspace = true }
 
-uuid = {version = "1.10.0", features = ["v4","fast-rng","macro-diagnostics"]}
+uuid = {version = "1.11.0", features = ["v4","fast-rng","macro-diagnostics"]}
 
